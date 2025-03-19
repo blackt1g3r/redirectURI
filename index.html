@@ -1,0 +1,29 @@
+<html>
+  <head>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div>
+      <h1 id="msg">Your access code</h1>
+      
+      <div id="container"></div>
+    </div>
+
+    <script>
+      var container = document.getElementById('container');
+      var my_html = '';
+      var url = window.location.search;
+      //url = '?error=invalid_request&error_description=Invalid+scopes%3A+apiconnect'
+
+      var query = url.substr(1);
+      var result = {};
+      query.split("&").forEach(function(part) {
+        var item = part.split("=");
+        result[item[0]] = decodeURIComponent(item[1]);
+        container.innerHTML += '<b>'+item[0]+': </b>'+result[item[0]] + '<br>';
+      });
+      
+    </script>
+
+  </body>
+</html>
